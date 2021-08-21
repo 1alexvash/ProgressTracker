@@ -32,6 +32,17 @@ const App = () => {
     }
   };
 
+  const addList = () => {
+    const listName = window.prompt("Name of the task")?.trim();
+    if (listName) {
+      const newList = {
+        name: listName,
+        tasks: [],
+      };
+      setLists([...lists, newList]);
+    }
+  };
+
   return (
     <StoreProvider store={store}>
       <div>
@@ -47,6 +58,7 @@ const App = () => {
               </div>
             </div>
           ))}
+          <button onClick={() => addList()}>Add List</button>
         </div>
       </div>
     </StoreProvider>
