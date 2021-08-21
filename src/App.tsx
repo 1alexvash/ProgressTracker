@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Task from "./components/Task";
 
-import { StoreProvider } from "easy-peasy";
+import { StoreProvider, useStoreState } from "easy-peasy";
 import store from "./store/store";
 
 interface ListInteface {
@@ -24,15 +24,16 @@ const App = () => {
       ],
     },
   ]);
-  const [tasks, setTasks] = useState<TaskInteface[]>([]);
 
-  const addTask = () => {
+  const addTask = (listIndex: number) => {
     const taskName = window.prompt("Name of the task")?.trim();
     if (taskName) {
       const newTask = {
         name: taskName,
       };
-      setTasks([...tasks, newTask]);
+      const newLists = lists;
+      newLists[listIndex].tasks.push(newTask);
+      setLists([...newLists]);
     }
   };
 
@@ -51,14 +52,14 @@ const App = () => {
     <StoreProvider store={store}>
       <div>
         <div className="lists">
-          {lists.map((list) => (
+          {lists.map((list, listIndex) => (
             <div className="list">
               <h2>{list.name}</h2>
               <div className="tasks">
                 {list.tasks.map((task: TaskInteface) => (
                   <Task task={task} />
                 ))}
-                <button onClick={() => addTask()}>Add Task</button>
+                <button onClick={() => addTask(listIndex)}>Add Task</button>
               </div>
             </div>
           ))}
