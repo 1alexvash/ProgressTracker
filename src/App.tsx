@@ -5,12 +5,16 @@ import Task from "./components/Task";
 import { StoreProvider } from "easy-peasy";
 import store from "./store/store";
 
+interface ListInteface {
+  name: string;
+  tasks: TaskInteface[];
+}
 interface TaskInteface {
   name: string;
 }
 
 const App = () => {
-  const [lists, setLists] = useState<object[]>([
+  const [lists, setLists] = useState<ListInteface[]>([
     {
       name: "Personal Tasks",
       tasks: [
@@ -51,7 +55,7 @@ const App = () => {
             <div className="list">
               <h2>{list.name}</h2>
               <div className="tasks">
-                {list.tasks.map((task) => (
+                {list.tasks.map((task: TaskInteface) => (
                   <Task task={task} />
                 ))}
                 <button onClick={() => addTask()}>Add Task</button>
