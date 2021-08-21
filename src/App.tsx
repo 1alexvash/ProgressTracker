@@ -10,6 +10,16 @@ interface TaskInteface {
 }
 
 const App = () => {
+  const [lists, setLists] = useState<object[]>([
+    {
+      name: "Personal Tasks",
+      tasks: [
+        { name: "Task number, 1" },
+        { name: "Task number, 2" },
+        { name: "Task number, 3" },
+      ],
+    },
+  ]);
   const [tasks, setTasks] = useState<TaskInteface[]>([]);
 
   const addTask = () => {
@@ -25,13 +35,19 @@ const App = () => {
   return (
     <StoreProvider store={store}>
       <div>
-        <ul>
-          {tasks.map((task) => (
-            <Task task={task} />
+        <div className="lists">
+          {lists.map((list) => (
+            <div className="list">
+              <h2>{list.name}</h2>
+              <div className="tasks">
+                {list.tasks.map((task) => (
+                  <Task task={task} />
+                ))}
+                <button onClick={() => addTask()}>Add Task</button>
+              </div>
+            </div>
           ))}
-        </ul>
-        <h1>Hello from the app!</h1>
-        <button onClick={() => addTask()}>Add Task</button>
+        </div>
       </div>
     </StoreProvider>
   );
