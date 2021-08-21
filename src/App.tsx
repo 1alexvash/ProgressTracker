@@ -2,6 +2,9 @@ import React, { useState } from "react";
 
 import Task from "./components/Task";
 
+import { StoreProvider } from "easy-peasy";
+import store from "./store/store";
+
 interface TaskInteface {
   name: string;
 }
@@ -20,15 +23,17 @@ const App = () => {
   };
 
   return (
-    <div>
-      <ul>
-        {tasks.map((task) => (
-          <Task task={task} />
-        ))}
-      </ul>
-      <h1>Hello from the app!</h1>
-      <button onClick={() => addTask()}>Add Task</button>
-    </div>
+    <StoreProvider store={store}>
+      <div>
+        <ul>
+          {tasks.map((task) => (
+            <Task task={task} />
+          ))}
+        </ul>
+        <h1>Hello from the app!</h1>
+        <button onClick={() => addTask()}>Add Task</button>
+      </div>
+    </StoreProvider>
   );
 };
 
