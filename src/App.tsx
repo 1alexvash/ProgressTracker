@@ -5,14 +5,6 @@ import Task from "./components/Task";
 import { StoreProvider, useStoreState } from "easy-peasy";
 import store from "./store/store";
 
-interface ListInteface {
-  name: string;
-  tasks: TaskInteface[];
-}
-interface TaskInteface {
-  name: string;
-}
-
 const App = () => {
   const [lists, setLists] = useState<ListInteface[]>([
     {

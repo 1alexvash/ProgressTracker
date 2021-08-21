@@ -1,9 +1,7 @@
 import React from "react";
 
 interface Props {
-  task: {
-    name: string;
-  };
+  task: TaskInteface;
 }
 
 const Task = ({ task }: Props) => {
