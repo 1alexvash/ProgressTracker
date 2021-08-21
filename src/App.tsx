@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 
-interface Props {}
+import Task from "./components/Task";
 
-type TaskArray = string[];
+interface TaskInteface {
+  name: string;
+}
 
-const App = (props: Props) => {
-  const [tasks, setTasks] = useState<TaskArray>([]);
+const App = () => {
+  const [tasks, setTasks] = useState<TaskInteface[]>([]);
 
   const addTask = () => {
     const taskName = window.prompt("Name of the task")?.trim();
     if (taskName) {
-      setTasks([...tasks, taskName]);
+      const newTask = {
+        name: taskName,
+      };
+      setTasks([...tasks, newTask]);
     }
   };
 
@@ -18,7 +23,7 @@ const App = (props: Props) => {
     <div>
       <ul>
         {tasks.map((task) => (
-          <li>{task}</li>
+          <Task task={task} />
         ))}
       </ul>
       <h1>Hello from the app!</h1>
