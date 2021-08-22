@@ -9,6 +9,6 @@ interface TaskInteface {
 }
 
 interface StoreModel {
-  lists: ListInteface[];
-  sayHello: any;
+  lists: any;
+  addTask: any;
 }

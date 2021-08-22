@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { StoreProvider, useStoreState } from "easy-peasy";
+import { StoreProvider } from "easy-peasy";
 import store from "./store/store";
 import Lists from "./components/Lists";
 

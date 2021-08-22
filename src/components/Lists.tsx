@@ -7,19 +7,7 @@ interface Props {}
 
 const Lists = () => {
   const { lists } = useStoreState<StoreModel>((state) => state);
-  const sayHello = useStoreActions<StoreModel>((actions) => actions.sayHello);
-
-  // const addTask = (listIndex: number) => {
-  //   const taskName = window.prompt("Name of the task")?.trim();
-  //   if (taskName) {
-  //     const newTask = {
-  //       name: taskName,
-  //     };
-  //     const newLists = lists;
-  //     newLists[listIndex].tasks.push(newTask);
-  //     setLists([...newLists]);
-  //   }
-  // };
+  const { addTask } = useStoreActions<StoreModel>((actions) => actions);
 
   // const addList = () => {
   //   const listName = window.prompt("Name of the task")?.trim();
@@ -34,9 +22,6 @@ const Lists = () => {
 
   return (
     <div className="lists">
-      <b>
-        <button onClick={() => sayHello()}>sayHello</button>
-      </b>
       {lists.map((list: ListInteface, listIndex: number) => (
         <div className="list" key={listIndex}>
           <h2>{list.name}</h2>
@@ -44,7 +29,7 @@ const Lists = () => {
             {list.tasks.map((task: TaskInteface, taskIndex: number) => (
               <Task task={task} key={taskIndex} />
             ))}
-            {/* <button onClick={() => addTask(listIndex)}>Add Task</button> */}
+            <button onClick={() => addTask(listIndex)}>Add Task</button>
           </div>
         </div>
       ))}

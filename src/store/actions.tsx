@@ -1,9 +1,5 @@
 import { action } from "easy-peasy";
 
-const actions = {
-  sayHello: action((state) => {
-    alert("hello");
-  }),
-};
+const actions = {};
 
 export default actions;
