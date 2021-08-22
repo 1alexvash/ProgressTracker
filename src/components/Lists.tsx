@@ -1,5 +1,5 @@
 import React from "react";
-import { useStoreState } from "easy-peasy";
+import { useStoreActions, useStoreState } from "easy-peasy";
 
 import Task from "./Task";
 
@@ -7,6 +7,7 @@ interface Props {}
 
 const Lists = () => {
   const { lists } = useStoreState<StoreModel>((state) => state);
+  const sayHello = useStoreActions<StoreModel>((actions) => actions.sayHello);
 
   // const addTask = (listIndex: number) => {
   //   const taskName = window.prompt("Name of the task")?.trim();
@@ -33,6 +34,9 @@ const Lists = () => {
 
   return (
     <div className="lists">
+      <b>
+        <button onClick={() => sayHello()}>sayHello</button>
+      </b>
       {lists.map((list: ListInteface, listIndex: number) => (
         <div className="list" key={listIndex}>
           <h2>{list.name}</h2>
