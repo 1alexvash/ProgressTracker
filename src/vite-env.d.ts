@@ -7,3 +7,7 @@ interface ListInteface {
 interface TaskInteface {
   name: string;
 }
+
+interface StoreModel {
+  lists: ListInteface[];
+}

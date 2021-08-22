@@ -6,7 +6,7 @@ import Task from "./Task";
 interface Props {}
 
 const Lists = () => {
-  const { lists } = useStoreState((state) => state);
+  const { lists } = useStoreState<StoreModel>((state) => state);
 
   // const addTask = (listIndex: number) => {
   //   const taskName = window.prompt("Name of the task")?.trim();
@@ -33,7 +33,7 @@ const Lists = () => {
 
   return (
     <div className="lists">
-      {lists.map((list, listIndex) => (
+      {lists.map((list: ListInteface, listIndex: number) => (
         <div className="list" key={listIndex}>
           <h2>{list.name}</h2>
           <div className="tasks">
