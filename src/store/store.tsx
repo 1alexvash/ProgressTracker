@@ -20,7 +20,7 @@ const defaultTodos = [
 const store = createStore<StoreModel>({
   todos: defaultTodos,
   addTodo: action((state, payload) => {
-    state.todos.push({ name: "something", description: "" });
+    state.todos.push(payload);
   }),
 });
 

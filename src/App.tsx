@@ -13,7 +13,9 @@ function TodoList() {
       {todos.map((todo: Task, index: number) => (
         <div key={index}>{todo.name}</div>
       ))}
-      <button onClick={() => addTodo("something")}>Add Todo</button>
+      <button onClick={() => addTodo({ name: "payload", description: "" })}>
+        Add Todo
+      </button>
     </div>
   );
 }

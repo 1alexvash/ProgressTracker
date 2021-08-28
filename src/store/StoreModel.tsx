@@ -6,5 +6,5 @@ export type Task = {
 };
 export interface StoreModel {
   todos: Task[];
-  addTodo: Action<StoreModel, string>;
+  addTodo: Action<StoreModel, Task>;
 }
