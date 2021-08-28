@@ -2,10 +2,25 @@ import { createStore, action } from "easy-peasy";
 
 import { StoreModel } from "./StoreModel";
 
+const defaultTodos = [
+  {
+    name: "First task",
+    description: "",
+  },
+  {
+    name: "Second task",
+    description: "",
+  },
+  {
+    name: "Third task",
+    description: "",
+  },
+];
+
 const store = createStore<StoreModel>({
-  todos: ["1", "2", "3"],
+  todos: defaultTodos,
   addTodo: action((state, payload) => {
-    state.todos.push(payload);
+    state.todos.push({ name: "something", description: "" });
   }),
 });
 
