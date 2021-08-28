@@ -1,9 +1,6 @@
-import { createStore, action, Action } from "easy-peasy";
+import { createStore, action } from "easy-peasy";
 
-export interface StoreModel {
-  todos: string[];
-  addTodo: Action<StoreModel, string>;
-}
+import { StoreModel } from "./StoreModel";
 
 const store = createStore<StoreModel>({
   todos: ["1", "2", "3"],
