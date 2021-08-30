@@ -2,11 +2,10 @@ import React from "react";
 
 import { StoreProvider, useStoreState, useStoreActions } from "easy-peasy";
 import store from "./store/store";
-import { StoreModel, Task } from "@/store/StoreModel";
 
 function TodoList() {
-  const todos = useStoreState<StoreModel>((state) => state.todos);
-  const addTodo = useStoreActions<StoreModel>((actions) => actions.addTodo);
+  const { todos } = useStoreState<StoreModel>((state) => state);
+  const { addTodo } = useStoreActions<StoreModel>((actions) => actions);
 
   return (
     <div>
@@ -20,12 +19,10 @@ function TodoList() {
   );
 }
 
-const App = () => {
-  return (
-    <StoreProvider store={store}>
-      <TodoList></TodoList>
-    </StoreProvider>
-  );
-};
+const App = () => (
+  <StoreProvider store={store}>
+    <TodoList></TodoList>
+  </StoreProvider>
+);
 
 export default App;

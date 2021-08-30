@@ -1,6 +1,4 @@
-import { createStore, action } from "easy-peasy";
-
-import { StoreModel } from "./StoreModel";
+import { createStore, action, State } from "easy-peasy";
 
 const defaultTodos = [
   {
@@ -17,9 +15,9 @@ const defaultTodos = [
   },
 ];
 
-const store = createStore<StoreModel>({
+const store = createStore({
   todos: defaultTodos,
-  addTodo: action((state, payload) => {
+  addTodo: action((state: State<StoreModel>, payload) => {
     state.todos.push(payload);
   }),
 });
