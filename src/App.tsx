@@ -3,10 +3,12 @@ import React from "react";
 import { StoreProvider } from "easy-peasy";
 import store from "./store/store";
 
-import TodoList from "./components/TodoList";
+import Lists from "./components/Lists";
 
 const App = () => (
-  <StoreProvider store={store}>{/* <TodoList /> */}</StoreProvider>
+  <StoreProvider store={store}>
+    <Lists />
+  </StoreProvider>
 );
 
 export default App;
