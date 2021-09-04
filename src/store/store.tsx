@@ -16,7 +16,16 @@ const defaultTodos = [
 ];
 
 const store = createStore({
-  lists: [defaultTodos, defaultTodos, defaultTodos],
+  lists: [
+    {
+      name: "work",
+      todos: defaultTodos,
+    },
+    {
+      name: "hobbies",
+      todos: defaultTodos,
+    },
+  ],
   addTodo: action((state: State<StoreModel>, payload) => {
     state.todos.push(payload);
   }),
