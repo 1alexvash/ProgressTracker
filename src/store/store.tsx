@@ -16,7 +16,7 @@ const defaultTodos = [
 ];
 
 const store = createStore({
-  todos: defaultTodos,
+  lists: [defaultTodos, defaultTodos, defaultTodos],
   addTodo: action((state: State<StoreModel>, payload) => {
     state.todos.push(payload);
   }),

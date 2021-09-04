@@ -6,9 +6,7 @@ import store from "./store/store";
 import TodoList from "./components/TodoList";
 
 const App = () => (
-  <StoreProvider store={store}>
-    <TodoList />
-  </StoreProvider>
+  <StoreProvider store={store}>{/* <TodoList /> */}</StoreProvider>
 );
 
 export default App;
