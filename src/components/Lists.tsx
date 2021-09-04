@@ -7,10 +7,10 @@ const Lists = () => {
 
   return (
     <div className="Lists">
-      {lists.map((list: List) => (
+      {lists.map((list: List, listIndex: number) => (
         <div className="list" key={list.name}>
           <h1>{list.name}</h1>
-          <TodoList todos={list.todos} />
+          <TodoList todos={list.todos} listIndex={listIndex} />
         </div>
       ))}
     </div>

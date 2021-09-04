@@ -27,7 +27,12 @@ const store = createStore({
     },
   ],
   addTodo: action((state: State<StoreModel>, payload) => {
-    state.lists[0].todos.push(payload);
+    const { name, description, listIndex } = payload;
+
+    state.lists[listIndex].todos.push({
+      name,
+      description,
+    });
   }),
 });
 
