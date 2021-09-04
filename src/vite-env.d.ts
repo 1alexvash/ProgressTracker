@@ -4,6 +4,6 @@ type Task = {
   name: string;
   description: string;
 };
-interface StoreModel {
+type StoreModel = {
   todos: Task[];
-}
+};
