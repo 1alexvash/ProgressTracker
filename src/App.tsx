@@ -7,9 +7,11 @@ import store from "./store/store";
 import Lists from "./components/Lists";
 
 const App = () => (
-  <StoreProvider store={store}>
-    <Lists />
-  </StoreProvider>
+  <div className="App">
+    <StoreProvider store={store}>
+      <Lists />
+    </StoreProvider>
+  </div>
 );
 
 export default App;
