@@ -34,6 +34,11 @@ const store = createStore({
       description,
     });
   }),
+  deleteTodo: action((state: State<StoreModel>, payload) => {
+    const { listIndex, todoIndex } = payload;
+
+    state.lists[listIndex].todos.splice(todoIndex, 1);
+  }),
 });
 
 export default store;

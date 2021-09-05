@@ -7,12 +7,28 @@ interface Props {
 }
 
 const TodoList = ({ todos, listIndex }: Props) => {
-  const { addTodo } = useStoreActions<StoreModel>((actions) => actions);
+  const { addTodo, deleteTodo } = useStoreActions<StoreModel>(
+    (actions) => actions
+  );
 
   return (
     <div>
-      {todos.map((todo, index: number) => (
-        <div key={index}>{todo.name}</div>
+      {todos.map((todo, todoIndex: number) => (
+        <div key={todoIndex}>
+          <div className="name">{todo.name}</div>
+          <div className="description">{todo.description}</div>
+          <span
+            className="delete"
+            onClick={() =>
+              deleteTodo({
+                listIndex,
+                todoIndex,
+              })
+            }
+          >
+            ❌
+          </span>
+        </div>
       ))}
       <button
         onClick={() =>
