@@ -1,4 +1,5 @@
 import React from "react";
+import "./scss/main.scss";
 
 import { StoreProvider } from "easy-peasy";
 import store from "./store/store";
