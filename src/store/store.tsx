@@ -1,4 +1,33 @@
-import { createStore, action, State } from "easy-peasy";
+import { createStore, action, Action, State } from "easy-peasy";
+
+export type Task = {
+  name: string;
+  description: string;
+};
+
+export type List = {
+  name: string;
+  todos: Task[];
+};
+
+export type StoreModel = {
+  lists: List[];
+  addTodo: Action<
+    StoreModel,
+    {
+      name: string;
+      description: string;
+      listIndex: number;
+    }
+  >;
+  deleteTodo: Action<
+    StoreModel,
+    {
+      listIndex: number;
+      todoIndex: number;
+    }
+  >;
+};
 
 const defaultTodos = [
   {
@@ -15,7 +44,7 @@ const defaultTodos = [
   },
 ];
 
-const store = createStore({
+const store = createStore<StoreModel>({
   lists: [
     {
       name: "work",
@@ -26,7 +55,7 @@ const store = createStore({
       todos: defaultTodos,
     },
   ],
-  addTodo: action((state: State<StoreModel>, payload) => {
+  addTodo: action((state, payload) => {
     const { name, description, listIndex } = payload;
 
     state.lists[listIndex].todos.push({
@@ -34,7 +63,7 @@ const store = createStore({
       description,
     });
   }),
-  deleteTodo: action((state: State<StoreModel>, payload) => {
+  deleteTodo: action((state, payload) => {
     const { listIndex, todoIndex } = payload;
 
     state.lists[listIndex].todos.splice(todoIndex, 1);
