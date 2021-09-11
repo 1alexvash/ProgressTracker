@@ -1,5 +1,6 @@
 import React from "react";
-import { useStoreActions } from "easy-peasy";
+import { Task } from "@/store/store";
+import { useStoreActions } from "@/hooks/useTypedHooks";
 
 interface Props {
   todos: Task[];
@@ -7,9 +8,7 @@ interface Props {
 }
 
 const TodoList = ({ todos, listIndex }: Props) => {
-  const { addTodo, deleteTodo } = useStoreActions<StoreModel>(
-    (actions) => actions
-  );
+  const { addTodo, deleteTodo } = useStoreActions((actions) => actions);
 
   return (
     <div>

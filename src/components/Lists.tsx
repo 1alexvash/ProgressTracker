@@ -1,9 +1,10 @@
 import React from "react";
-import { useStoreState } from "easy-peasy";
+import { List } from "@/store/store";
+import { useStoreState } from "@/hooks/useTypedHooks";
 import TodoList from "./TodoList";
 
 const Lists = () => {
-  const { lists } = useStoreState<StoreModel>((state) => state);
+  const { lists } = useStoreState((state) => state);
 
   return (
     <div className="Lists">
