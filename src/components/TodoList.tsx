@@ -8,7 +8,9 @@ interface Props {
 }
 
 const TodoList = ({ todos, listIndex }: Props) => {
-  const { addTodo, deleteTodo } = useStoreActions((actions) => actions);
+  const { addTodo, deleteTodo, toggleTaskStatus } = useStoreActions(
+    (actions) => actions
+  );
 
   return (
     <div>
@@ -27,7 +29,11 @@ const TodoList = ({ todos, listIndex }: Props) => {
           >
             ❌
           </span>
-          <input type="checkbox" checked={todo.done} />
+          <input
+            type="checkbox"
+            checked={todo.done}
+            onChange={() => toggleTaskStatus({ listIndex, todoIndex })}
+          />
         </div>
       ))}
       <button

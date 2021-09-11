@@ -28,6 +28,13 @@ export type StoreModel = {
       todoIndex: number;
     }
   >;
+  toggleTaskStatus: Action<
+    StoreModel,
+    {
+      listIndex: number;
+      todoIndex: number;
+    }
+  >;
 };
 
 const defaultTodos = [
@@ -72,6 +79,12 @@ const store = createStore<StoreModel>({
     const { listIndex, todoIndex } = payload;
 
     state.lists[listIndex].todos.splice(todoIndex, 1);
+  }),
+  toggleTaskStatus: action((state, payload) => {
+    const { listIndex, todoIndex } = payload;
+
+    const task = state.lists[listIndex].todos[todoIndex];
+    task.done = !task.done;
   }),
 });
 
