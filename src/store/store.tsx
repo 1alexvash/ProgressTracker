@@ -3,6 +3,7 @@ import { createStore, action, Action, State } from "easy-peasy";
 export type Task = {
   name: string;
   description: string;
+  done: boolean;
 };
 
 export type List = {
@@ -33,14 +34,17 @@ const defaultTodos = [
   {
     name: "First task",
     description: "",
+    done: true,
   },
   {
     name: "Second task",
     description: "",
+    done: false,
   },
   {
     name: "Third task",
     description: "",
+    done: false,
   },
 ];
 
@@ -61,6 +65,7 @@ const store = createStore<StoreModel>({
     state.lists[listIndex].todos.push({
       name,
       description,
+      done: false,
     });
   }),
   deleteTodo: action((state, payload) => {

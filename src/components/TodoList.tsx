@@ -27,6 +27,7 @@ const TodoList = ({ todos, listIndex }: Props) => {
           >
             ❌
           </span>
+          <input type="checkbox" checked={todo.done} />
         </div>
       ))}
       <button
