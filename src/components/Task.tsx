@@ -9,12 +9,9 @@ interface Props {
 }
 
 const Task = ({ todoIndex, listIndex, todo }: Props) => {
-  const { deleteTodo, toggleTaskStatus } = useStoreActions(
+  const { deleteTodo, toggleTaskStatus, updateTime } = useStoreActions(
     (actions) => actions
   );
-
-  const getHours = (totalMinutes: number) => Math.floor(totalMinutes / 60);
-  const getMinutes = (totalMinutes: number) => totalMinutes % 60;
 
   return (
     <div>
@@ -37,9 +34,31 @@ const Task = ({ todoIndex, listIndex, todo }: Props) => {
         onChange={() => toggleTaskStatus({ listIndex, todoIndex })}
       />
       Hours:
-      <input type="number" value={getHours(todo.estimatedTime.hours)} />
+      <input
+        type="number"
+        value={todo.estimatedTime.hours}
+        onChange={(e) =>
+          updateTime({
+            listIndex,
+            todoIndex,
+            timeUnit: "hours",
+            value: parseInt(e.target.value),
+          })
+        }
+      />
       Minutes:
-      <input type="number" value={getMinutes(todo.estimatedTime.minutes)} />
+      <input
+        type="number"
+        value={todo.estimatedTime.minutes}
+        onChange={(e) =>
+          updateTime({
+            listIndex,
+            todoIndex,
+            timeUnit: "minutes",
+            value: parseInt(e.target.value),
+          })
+        }
+      />
     </div>
   );
 };

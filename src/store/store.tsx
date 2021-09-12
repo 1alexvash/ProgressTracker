@@ -39,6 +39,15 @@ export type StoreModel = {
       todoIndex: number;
     }
   >;
+  updateTime: Action<
+    StoreModel,
+    {
+      listIndex: number;
+      todoIndex: number;
+      timeUnit: "hours" | "minutes";
+      value: number;
+    }
+  >;
 };
 
 const defaultTodos = [
@@ -105,6 +114,14 @@ const store = createStore<StoreModel>({
 
     const task = state.lists[listIndex].todos[todoIndex];
     task.done = !task.done;
+  }),
+  updateTime: action((state, payload) => {
+    const { listIndex, todoIndex, timeUnit, value } = payload;
+    console.log("value:", value);
+
+    const task: Task = state.lists[listIndex].todos[todoIndex];
+
+    task.estimatedTime[timeUnit] = value;
   }),
 });
 
