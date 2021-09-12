@@ -1,9 +1,10 @@
-import { createStore, action, Action, State } from "easy-peasy";
+import { createStore, action, Action } from "easy-peasy";
 
 export type Task = {
   name: string;
   description: string;
   done: boolean;
+  estimatedMinutes: number;
 };
 
 export type List = {
@@ -42,16 +43,19 @@ const defaultTodos = [
     name: "First task",
     description: "",
     done: true,
+    estimatedMinutes: 150,
   },
   {
     name: "Second task",
     description: "",
     done: false,
+    estimatedMinutes: 30,
   },
   {
     name: "Third task",
     description: "",
     done: false,
+    estimatedMinutes: 180,
   },
 ];
 
@@ -73,6 +77,7 @@ const store = createStore<StoreModel>({
       name,
       description,
       done: false,
+      estimatedMinutes: 30,
     });
   }),
   deleteTodo: action((state, payload) => {
