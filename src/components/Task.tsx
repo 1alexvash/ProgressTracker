@@ -13,11 +13,12 @@ const Task = ({ todoIndex, listIndex, todo }: Props) => {
     (actions) => actions
   );
 
-  const getTimeFromMinutes = (totalMinutes: number) => {
-    const hours = Math.floor(totalMinutes / 60);
-    const minutes = totalMinutes % 60;
+  const getHours = (totalMinutes: number) => {
+    return Math.floor(totalMinutes / 60);
+  };
 
-    return `Hours: ${hours} minutes: ${minutes}`;
+  const getMinutes = (totalMinutes: number) => {
+    return totalMinutes % 60;
   };
 
   return (
@@ -40,7 +41,10 @@ const Task = ({ todoIndex, listIndex, todo }: Props) => {
         checked={todo.done}
         onChange={() => toggleTaskStatus({ listIndex, todoIndex })}
       />
-      {getTimeFromMinutes(todo.estimatedMinutes)}
+      Hours:
+      <input type="number" value={getHours(todo.estimatedMinutes)} />
+      Minutes:
+      <input type="number" value={getMinutes(todo.estimatedMinutes)} />
     </div>
   );
 };

@@ -5,7 +5,12 @@
 .App {
   font-family: sans-serif;
   font-family: "Open Sans", sans-serif;
-  input[type="checkbox"] {
+  input[type="checkbox"],
+  input[type="number"] {
     width: initial;
+  }
+  input[type="number"] {
+    border: 1px solid gray;
+    width: 40px;
   }
 }
