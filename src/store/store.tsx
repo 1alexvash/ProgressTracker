@@ -4,7 +4,10 @@ export type Task = {
   name: string;
   description: string;
   done: boolean;
-  estimatedMinutes: number;
+  estimatedTime: {
+    hours: number;
+    minutes: number;
+  };
 };
 
 export type List = {
@@ -43,19 +46,28 @@ const defaultTodos = [
     name: "First task",
     description: "",
     done: true,
-    estimatedMinutes: 150,
+    estimatedTime: {
+      hours: 2,
+      minutes: 30,
+    },
   },
   {
     name: "Second task",
     description: "",
     done: false,
-    estimatedMinutes: 30,
+    estimatedTime: {
+      hours: 0,
+      minutes: 30,
+    },
   },
   {
     name: "Third task",
     description: "",
     done: false,
-    estimatedMinutes: 180,
+    estimatedTime: {
+      hours: 3,
+      minutes: 0,
+    },
   },
 ];
 
@@ -77,7 +89,10 @@ const store = createStore<StoreModel>({
       name,
       description,
       done: false,
-      estimatedMinutes: 30,
+      estimatedTime: {
+        hours: 0,
+        minutes: 0,
+      },
     });
   }),
   deleteTodo: action((state, payload) => {
