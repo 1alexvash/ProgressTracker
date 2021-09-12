@@ -1,40 +1,25 @@
 import React from "react";
-import { Task } from "@/store/store";
+import { Task as TaskInterface } from "@/store/store";
 import { useStoreActions } from "@/hooks/useTypedHooks";
+import Task from "./Task";
 
 interface Props {
-  todos: Task[];
+  todos: TaskInterface[];
   listIndex: number;
 }
 
 const TodoList = ({ todos, listIndex }: Props) => {
-  const { addTodo, deleteTodo, toggleTaskStatus } = useStoreActions(
-    (actions) => actions
-  );
+  const { addTodo } = useStoreActions((actions) => actions);
 
   return (
     <div>
       {todos.map((todo, todoIndex: number) => (
-        <div key={todoIndex}>
-          <div className="name">{todo.name}</div>
-          <div className="description">{todo.description}</div>
-          <span
-            className="delete"
-            onClick={() =>
-              deleteTodo({
-                listIndex,
-                todoIndex,
-              })
-            }
-          >
-            ❌
-          </span>
-          <input
-            type="checkbox"
-            checked={todo.done}
-            onChange={() => toggleTaskStatus({ listIndex, todoIndex })}
-          />
-        </div>
+        <Task
+          key={todoIndex}
+          todoIndex={todoIndex}
+          listIndex={listIndex}
+          todo={todo}
+        />
       ))}
       <button
         onClick={() =>
